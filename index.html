@@ -1,0 +1,2994 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Menu MBG - SPPG Sukanagara 003</title>
+
+<style>
+
+/* =========================================================
+   DASAR
+========================================================= */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#f2f6f3;
+  color:#222;
+  overflow-x:hidden;
+}
+
+
+/* =========================================================
+   ANIMASI
+========================================================= */
+
+@keyframes muncul{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes turun{
+  from{
+    opacity:0;
+    transform:translateY(-25px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes zoomFoto{
+  from{
+    opacity:0;
+    transform:scale(1.04);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+@keyframes denyut{
+  0%,100%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.03);
+  }
+}
+
+
+/* =========================================================
+   ANIMASI CHEF
+========================================================= */
+
+@keyframes chefLoncat{
+
+  0%,100%{
+    transform:translateY(0) rotate(0deg);
+  }
+
+  25%{
+    transform:translateY(-10px) rotate(-3deg);
+  }
+
+  50%{
+    transform:translateY(-18px) rotate(2deg);
+  }
+
+  75%{
+    transform:translateY(-8px) rotate(-2deg);
+  }
+
+}
+
+@keyframes munculBalon{
+
+  from{
+    opacity:0;
+    transform:scale(.7) translateY(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+
+}
+
+@keyframes bintang{
+
+  0%,100%{
+    transform:scale(.8);
+    opacity:.5;
+  }
+
+  50%{
+    transform:scale(1.2);
+    opacity:1;
+  }
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+
+  background:
+    linear-gradient(
+      135deg,
+      #087f5b,
+      #12b886
+    );
+
+  color:white;
+
+  padding:20px 18px 25px;
+
+  text-align:center;
+
+  border-radius:0 0 28px 28px;
+
+  animation:turun .7s ease;
+
+  box-shadow:
+    0 6px 20px
+    rgba(0,0,0,.12);
+
+  position:relative;
+
+  overflow:hidden;
+
+}
+
+.logo-bgn{
+
+  width:75px;
+
+  height:75px;
+
+  object-fit:contain;
+
+  background:white;
+
+  border-radius:50%;
+
+  padding:4px;
+
+  display:block;
+
+  margin:0 auto 10px;
+
+  box-shadow:
+    0 4px 12px
+    rgba(0,0,0,.2);
+
+  animation:muncul .8s ease;
+
+}
+
+header h1{
+
+  font-size:29px;
+
+  margin-bottom:7px;
+
+  text-shadow:
+    0 2px 5px
+    rgba(0,0,0,.15);
+
+}
+
+header p{
+
+  font-size:16px;
+
+  opacity:.95;
+
+  font-weight:bold;
+
+}
+
+.header-label{
+
+  display:inline-block;
+
+  margin-top:12px;
+
+  padding:6px 15px;
+
+  border-radius:20px;
+
+  background:#fff;
+
+  color:#087f5b;
+
+  font-size:13px;
+
+  font-weight:bold;
+
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container{
+
+  max-width:600px;
+
+  margin:auto;
+
+  padding:18px;
+
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card{
+
+  background:white;
+
+  border-radius:18px;
+
+  padding:18px;
+
+  margin-bottom:16px;
+
+  box-shadow:
+    0 4px 15px
+    rgba(0,0,0,.08);
+
+  animation:muncul .7s ease both;
+
+}
+
+
+/* =========================================================
+   TANGGAL
+========================================================= */
+
+.tanggal{
+
+  text-align:center;
+
+  color:#087f5b;
+
+  font-weight:bold;
+
+  margin-bottom:18px;
+
+  font-size:16px;
+
+}
+
+
+/* =========================================================
+   KELOMPOK
+========================================================= */
+
+.kelompok{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:12px;
+
+  margin-bottom:20px;
+
+}
+
+.kelompok button{
+
+  border:none;
+
+  min-height:85px;
+
+  padding:10px;
+
+  border-radius:20px;
+
+  font-size:16px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 4px 10px
+    rgba(0,0,0,.08);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    filter .2s ease;
+
+}
+
+
+/* =========================================================
+   WARNA NORMAL
+========================================================= */
+
+.kelompok button:nth-child(1){
+
+  background:#d8f5e5;
+
+  color:#087f5b;
+
+}
+
+.kelompok button:nth-child(2){
+
+  background:#dceeff;
+
+  color:#1971c2;
+
+}
+
+.kelompok button:nth-child(3){
+
+  background:#ffe0e6;
+
+  color:#d6336c;
+
+}
+
+.kelompok button:nth-child(4){
+
+  background:#fff1b8;
+
+  color:#8a6900;
+
+}
+
+.kelompok button:nth-child(5){
+
+  background:#e8ddff;
+
+  color:#7048b8;
+
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.kelompok button:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 7px 15px
+    rgba(0,0,0,.12);
+
+  filter:brightness(.97);
+
+}
+
+.kelompok button:active{
+
+  transform:scale(.95);
+
+}
+
+
+/* =========================================================
+   WARNA SAAT DIPILIH
+========================================================= */
+
+.kelompok button.active{
+
+  color:white;
+
+  animation:denyut .35s ease;
+
+}
+
+.kelompok button.active-kecil{
+
+  background:#20c76a;
+
+  color:white;
+
+}
+
+.kelompok button.active-besar{
+
+  background:#42a5f5;
+
+  color:white;
+
+}
+
+.kelompok button.active-bumil{
+
+  background:#ff8fa3;
+
+  color:white;
+
+}
+
+.kelompok button.active-busui{
+
+  background:#ffd43b;
+
+  color:#5c4700;
+
+}
+
+.kelompok button.active-balita{
+
+  background:#9b6cff;
+
+  color:white;
+
+}
+
+
+/* =========================================================
+   FOTO MENU
+========================================================= */
+
+.foto-menu{
+
+  width:100%;
+
+  min-height:210px;
+
+  background:#d8eee5;
+
+  border-radius:18px;
+
+  overflow:hidden;
+
+  margin-bottom:20px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  position:relative;
+
+}
+
+.foto-menu img{
+
+  width:100%;
+
+  min-height:210px;
+
+  max-height:380px;
+
+  object-fit:cover;
+
+  display:block;
+
+  animation:zoomFoto .5s ease;
+
+}
+
+.foto-tidak-ada{
+
+  display:none;
+
+  text-align:center;
+
+  color:#087f5b;
+
+  font-weight:bold;
+
+  padding:30px;
+
+}
+
+
+/* =========================================================
+   JUDUL MENU
+========================================================= */
+
+.menu-title{
+
+  color:#087f5b;
+
+  margin-bottom:15px;
+
+  font-size:23px;
+
+}
+
+
+/* =========================================================
+   DAFTAR MENU
+========================================================= */
+
+.menu-list{
+
+  list-style:none;
+
+}
+
+.menu-list li{
+
+  padding:12px 5px;
+
+  border-bottom:1px solid #eee;
+
+  font-size:18px;
+
+  animation:muncul .35s ease both;
+
+}
+
+.menu-list li:last-child{
+
+  border-bottom:none;
+
+}
+
+
+/* =========================================================
+   GIZI
+========================================================= */
+
+.gizi{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:12px;
+
+}
+
+.gizi-box{
+
+  background:#e7f5ef;
+
+  border-radius:14px;
+
+  padding:15px;
+
+  text-align:center;
+
+  color:#087f5b;
+
+  transition:
+    transform .2s ease;
+
+}
+
+.gizi-box:hover{
+
+  transform:translateY(-3px);
+
+}
+
+.gizi-box strong{
+
+  display:block;
+
+  font-size:20px;
+
+  margin-top:7px;
+
+}
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+.waktu{
+
+  text-align:center;
+
+}
+
+.waktu h3{
+
+  color:#087f5b;
+
+  font-size:22px;
+
+  margin-bottom:10px;
+
+}
+
+.waktu p{
+
+  line-height:1.5;
+
+}
+
+#countdown{
+
+  font-size:36px;
+
+  font-weight:bold;
+
+  color:#087f5b;
+
+  margin:12px 0;
+
+}
+
+.peringatan{
+
+  background:#e7f5ef;
+
+  color:#087f5b;
+
+  padding:10px;
+
+  border-radius:10px;
+
+  font-weight:bold;
+
+}
+
+.peringatan.merah{
+
+  background:#ffe5e5;
+
+  color:#d00000;
+
+}
+
+
+/* =========================================================
+   KALENDER
+========================================================= */
+
+.kalender-header{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:15px;
+
+}
+
+.kalender-header button{
+
+  border:none;
+
+  background:#e7f5ef;
+
+  color:#087f5b;
+
+  width:38px;
+
+  height:38px;
+
+  border-radius:10px;
+
+  font-size:20px;
+
+  font-weight:bold;
+
+  transition:
+    transform .2s ease;
+
+}
+
+.kalender-header button:active{
+
+  transform:scale(.9);
+
+}
+
+#namaBulan{
+
+  color:#087f5b;
+
+  font-size:20px;
+
+  font-weight:bold;
+
+}
+
+.kalender-hari,
+.kalender-tanggal{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(7,1fr);
+
+  gap:5px;
+
+  text-align:center;
+
+}
+
+.kalender-hari div{
+
+  color:#777;
+
+  font-size:12px;
+
+  font-weight:bold;
+
+  padding:6px 0;
+
+}
+
+.kalender-tanggal button{
+
+  border:none;
+
+  background:#f2f6f3;
+
+  color:#333;
+
+  height:38px;
+
+  border-radius:10px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:
+    transform .15s ease,
+    background .2s ease;
+
+}
+
+.kalender-tanggal button:active{
+
+  transform:scale(.9);
+
+}
+
+.kalender-tanggal button.ada-menu{
+
+  background:#e7f5ef;
+
+  color:#087f5b;
+
+}
+
+.kalender-tanggal button.terpilih{
+
+  background:#087f5b;
+
+  color:white;
+
+}
+
+.kalender-tanggal button.kosong{
+
+  background:transparent;
+
+  pointer-events:none;
+
+}
+
+
+/* =========================================================
+   RIWAYAT
+========================================================= */
+
+.hasil-riwayat{
+
+  margin-top:18px;
+
+  padding:15px;
+
+  background:#f2f6f3;
+
+  border-radius:14px;
+
+  line-height:1.7;
+
+  animation:muncul .4s ease;
+
+}
+
+.hasil-riwayat h3{
+
+  color:#087f5b;
+
+  margin-bottom:8px;
+
+}
+
+
+/* =========================================================
+   INFORMASI
+========================================================= */
+
+.info{
+
+  line-height:1.6;
+
+  color:#555;
+
+}
+
+
+/* =========================================================
+   KONTAK
+========================================================= */
+
+.kontak-box{
+
+  background:#e7f5ef;
+
+  border-radius:15px;
+
+  padding:15px;
+
+  margin-top:15px;
+
+}
+
+.input-pengaduan{
+
+  width:100%;
+
+  border:1px solid #d5e5de;
+
+  border-radius:12px;
+
+  padding:13px;
+
+  margin-top:10px;
+
+  font-size:15px;
+
+  outline:none;
+
+}
+
+.input-pengaduan:focus{
+
+  border-color:#087f5b;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(8,127,91,.1);
+
+}
+
+textarea.input-pengaduan{
+
+  min-height:110px;
+
+  resize:vertical;
+
+}
+
+.tombol-wa{
+
+  display:block;
+
+  width:100%;
+
+  border:none;
+
+  border-radius:13px;
+
+  padding:14px;
+
+  margin-top:12px;
+
+  background:#087f5b;
+
+  color:white;
+
+  font-size:16px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  text-align:center;
+
+  transition:
+    transform .2s ease,
+    background .2s ease;
+
+}
+
+.tombol-wa:hover{
+
+  background:#066b4d;
+
+}
+
+.tombol-wa:active{
+
+  transform:scale(.97);
+
+}
+
+.nomor-info{
+
+  font-size:13px;
+
+  color:#666;
+
+  margin-top:10px;
+
+  line-height:1.5;
+
+}
+
+
+/* =========================================================
+   CHEF
+========================================================= */
+
+.chef-maskot{
+
+  position:fixed;
+
+  right:8px;
+
+  bottom:18px;
+
+  width:105px;
+
+  z-index:999;
+
+  cursor:pointer;
+
+  user-select:none;
+
+  animation:
+    chefLoncat 1.8s
+    ease-in-out infinite;
+
+  filter:
+    drop-shadow(
+      0 6px 5px
+      rgba(0,0,0,.18)
+    );
+
+}
+
+.chef-karakter{
+
+  font-size:82px;
+
+  line-height:1;
+
+  text-align:center;
+
+}
+
+.balon-chef{
+
+  position:absolute;
+
+  right:75px;
+
+  bottom:78px;
+
+  width:235px;
+
+  background:white;
+
+  border:4px solid #087f5b;
+
+  border-radius:20px;
+
+  padding:13px;
+
+  color:#087f5b;
+
+  font-weight:bold;
+
+  font-size:14px;
+
+  line-height:1.35;
+
+  text-align:center;
+
+  box-shadow:
+    0 5px 18px
+    rgba(0,0,0,.15);
+
+  animation:
+    munculBalon .6s ease;
+
+}
+
+.balon-chef::after{
+
+  content:"";
+
+  position:absolute;
+
+  right:-12px;
+
+  bottom:15px;
+
+  width:20px;
+
+  height:20px;
+
+  background:white;
+
+  border-right:4px solid #087f5b;
+
+  border-top:4px solid #087f5b;
+
+  transform:
+    rotate(45deg);
+
+}
+
+.bintang-chef{
+
+  position:absolute;
+
+  color:#f7c928;
+
+  font-size:20px;
+
+  animation:
+    bintang 1.2s
+    ease-in-out infinite;
+
+}
+
+.bintang1{
+
+  top:-10px;
+
+  left:8px;
+
+}
+
+.bintang2{
+
+  top:30px;
+
+  right:-2px;
+
+  animation-delay:.4s;
+
+}
+
+.bintang3{
+
+  bottom:15px;
+
+  left:-5px;
+
+  animation-delay:.7s;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+  text-align:center;
+
+  padding:25px 20px;
+
+  color:#777;
+
+  font-size:13px;
+
+}
+
+
+/* =========================================================
+   HP
+========================================================= */
+
+@media(max-width:420px){
+
+  header h1{
+
+    font-size:25px;
+
+  }
+
+  .logo-bgn{
+
+    width:68px;
+
+    height:68px;
+
+  }
+
+  .chef-maskot{
+
+    right:2px;
+
+    bottom:12px;
+
+    width:82px;
+
+  }
+
+  .chef-karakter{
+
+    font-size:65px;
+
+  }
+
+  .balon-chef{
+
+    width:205px;
+
+    right:58px;
+
+    bottom:65px;
+
+    font-size:12px;
+
+    padding:10px;
+
+  }
+
+}
+
+
+@media(max-width:350px){
+
+  .balon-chef{
+
+    width:185px;
+
+    right:48px;
+
+    font-size:11px;
+
+  }
+
+  .chef-maskot{
+
+    width:70px;
+
+  }
+
+  .chef-karakter{
+
+    font-size:55px;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+  <img
+    src="./logo-bgn.png"
+    class="logo-bgn"
+    alt="Logo Badan Gizi Nasional">
+
+  <h1>
+    🍱 Menu MBG
+  </h1>
+
+  <p>
+    SPPG Sukanagara 003
+  </p>
+
+  <div class="header-label">
+    🌿 Informasi Menu MBG
+  </div>
+
+</header>
+
+
+<!-- =========================================================
+     CHEF
+========================================================= -->
+
+<div
+  class="chef-maskot"
+  onclick="tampilkanSapaanChef()"
+  title="Klik chef">
+
+  <div
+    class="balon-chef"
+    id="balonChef">
+
+    👋 Selamat Datang di Web Menu
+
+    <br>
+
+    <b>SPPG Sukanagara 003!</b>
+
+    <br><br>
+
+    Yuk cek menu hari ini 🍱
+
+  </div>
+
+
+  <div class="bintang-chef bintang1">
+    ✨
+  </div>
+
+  <div class="bintang-chef bintang2">
+    ⭐
+  </div>
+
+  <div class="bintang-chef bintang3">
+    ✨
+  </div>
+
+
+  <div class="chef-karakter">
+    🧑‍🍳
+  </div>
+
+</div>
+
+
+<div class="container">
+
+
+<!-- =========================================================
+     MENU UTAMA
+========================================================= -->
+
+<div class="card">
+
+
+  <div
+    class="tanggal"
+    id="tanggal">
+
+    Memuat tanggal...
+
+  </div>
+
+
+  <div class="kelompok">
+
+
+    <button
+      class="active active-kecil"
+      onclick="pilihKelompok(this,'kecil')">
+
+      🍱<br>
+      Porsi Kecil
+
+    </button>
+
+
+    <button
+      onclick="pilihKelompok(this,'besar')">
+
+      🍛<br>
+      Porsi Besar
+
+    </button>
+
+
+    <button
+      onclick="pilihKelompok(this,'bumil')">
+
+      🤰<br>
+      Bumil
+
+    </button>
+
+
+    <button
+      onclick="pilihKelompok(this,'busui')">
+
+      🤱<br>
+      Busui
+
+    </button>
+
+
+    <button
+      onclick="pilihKelompok(this,'balita')">
+
+      👶<br>
+      Balita
+
+    </button>
+
+
+  </div>
+
+
+  <div class="foto-menu">
+
+
+    <img
+      id="fotoMenu"
+      src="./Foto menu/2026-10-05/kecil.jpg"
+      alt="Foto Menu MBG">
+
+
+    <div
+      id="fotoTidakAda"
+      class="foto-tidak-ada">
+
+      📷<br><br>
+
+      Foto menu belum tersedia.
+
+    </div>
+
+
+  </div>
+
+
+  <h2
+    class="menu-title"
+    id="judulMenu">
+
+    Menu Porsi Kecil
+
+  </h2>
+
+
+  <ul
+    class="menu-list"
+    id="daftarMenu">
+
+  </ul>
+
+
+</div>
+
+
+<!-- =========================================================
+     GIZI
+========================================================= -->
+
+<div class="card">
+
+  <h2 class="menu-title">
+
+    📊 Kandungan Gizi
+
+  </h2>
+
+
+  <div class="gizi">
+
+
+    <div class="gizi-box">
+
+      Kalori
+
+      <strong id="kalori">
+        -
+      </strong>
+
+    </div>
+
+
+    <div class="gizi-box">
+
+      Protein
+
+      <strong id="protein">
+        -
+      </strong>
+
+    </div>
+
+
+    <div class="gizi-box">
+
+      Karbohidrat
+
+      <strong id="karbo">
+        -
+      </strong>
+
+    </div>
+
+
+    <div class="gizi-box">
+
+      Lemak
+
+      <strong id="lemak">
+        -
+      </strong>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     COUNTDOWN
+========================================================= -->
+
+<div class="card waktu">
+
+
+  <h3>
+    ⏰ Batas Konsumsi
+  </h3>
+
+
+  <p>
+
+    Konsumsi makanan maksimal sampai
+    <b>pukul 12.00</b>
+
+  </p>
+
+
+  <div id="countdown">
+    Menghitung...
+  </div>
+
+
+  <div
+    id="peringatan"
+    class="peringatan">
+
+    Waktu konsumsi masih tersedia.
+
+  </div>
+
+
+</div>
+
+
+<!-- =========================================================
+     RIWAYAT
+========================================================= -->
+
+<div class="card">
+
+
+  <h2 class="menu-title">
+    📅 Riwayat Menu
+  </h2>
+
+
+  <div class="kalender-header">
+
+
+    <button onclick="bulanSebelumnya()">
+      ◀
+    </button>
+
+
+    <div id="namaBulan">
+      Memuat bulan...
+    </div>
+
+
+    <button onclick="bulanBerikutnya()">
+      ▶
+    </button>
+
+
+  </div>
+
+
+  <div class="kalender-hari">
+
+    <div>Min</div>
+    <div>Sen</div>
+    <div>Sel</div>
+    <div>Rab</div>
+    <div>Kam</div>
+    <div>Jum</div>
+    <div>Sab</div>
+
+  </div>
+
+
+  <div
+    class="kalender-tanggal"
+    id="kalenderTanggal">
+
+  </div>
+
+
+  <div
+    class="hasil-riwayat"
+    id="hasilRiwayat">
+
+    <h3>
+      📋 Menu Hari Ini
+    </h3>
+
+    <div>
+      Silakan pilih tanggal pada kalender.
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<!-- =========================================================
+     INFORMASI
+========================================================= -->
+
+<div class="card">
+
+
+  <h2 class="menu-title">
+    ℹ️ Informasi
+  </h2>
+
+
+  <p class="info">
+
+    Menu hari sebelumnya dapat dilihat
+    melalui riwayat menu.
+
+    <br><br>
+
+    Informasi menu dan kandungan gizi
+    dapat berubah sesuai data SPPG.
+
+    <br><br>
+
+    Untuk pertanyaan, kritik, saran,
+    atau pengaduan mengenai pelayanan
+    MBG, silakan gunakan formulir
+    pengaduan di bawah.
+
+  </p>
+
+
+</div>
+
+
+<!-- =========================================================
+     KONTAK
+========================================================= -->
+
+<div class="card">
+
+
+  <h2 class="menu-title">
+    📞 Kontak & Pengaduan
+  </h2>
+
+
+  <p class="info">
+
+    Sampaikan pertanyaan, kritik, saran,
+    atau pengaduan mengenai pelayanan
+    dan menu MBG.
+
+  </p>
+
+
+  <div class="kontak-box">
+
+
+    <b>
+      📝 Formulir Pengaduan
+    </b>
+
+
+    <input
+      type="text"
+      id="namaPengadu"
+      class="input-pengaduan"
+      placeholder="Nama Anda">
+
+
+    <textarea
+      id="pesanPengaduan"
+      class="input-pengaduan"
+      placeholder="Tuliskan pertanyaan / pengaduan Anda..."></textarea>
+
+
+    <button
+      class="tombol-wa"
+      onclick="kirimPengaduan()">
+
+      💬 KIRIM PENGADUAN VIA WHATSAPP
+
+    </button>
+
+
+    <p class="nomor-info">
+
+      Pengaduan akan diteruskan melalui
+      WhatsApp SPPG Sukanagara 003.
+
+    </p>
+
+
+  </div>
+
+
+</div>
+
+
+</div>
+
+
+<footer>
+
+  © 2026 SPPG Sukanagara 003
+
+  <br>
+
+  Informasi Menu MBG
+
+</footer>
+
+
+<script>
+
+
+/* =========================================================
+   DATA MENU
+========================================================= */
+
+let dataMenu = {};
+
+
+/* =========================================================
+   DATA ADMIN
+========================================================= */
+
+let dataAdmin={};
+
+try{
+
+  dataAdmin=
+    JSON.parse(
+      localStorage.getItem("dataMenuSPPG")
+    ) || {};
+
+}catch(error){
+
+  dataAdmin={};
+
+}
+
+
+Object.keys(dataAdmin).forEach(function(tanggal){
+
+  if(!dataMenu[tanggal]){
+
+    dataMenu[tanggal]={};
+
+  }
+
+  Object.keys(dataAdmin[tanggal]).forEach(function(kelompok){
+
+    dataMenu[tanggal][kelompok]=
+      dataAdmin[tanggal][kelompok];
+
+  });
+
+});
+
+
+/* =========================================================
+   VARIABEL TANGGAL OTOMATIS
+========================================================= */
+
+let sekarangHariIni=
+  new Date();
+
+
+let tanggalDipilih=
+  sekarangHariIni.getFullYear()
+  + "-"
+  +
+  String(
+    sekarangHariIni.getMonth()+1
+  ).padStart(2,"0")
+  + "-"
+  +
+  String(
+    sekarangHariIni.getDate()
+  ).padStart(2,"0");
+
+
+let kelompokDipilih=
+  "kecil";
+
+
+const pilihanTanggal={
+
+  weekday:"long",
+  year:"numeric",
+  month:"long",
+  day:"numeric"
+
+};
+
+
+/* =========================================================
+   CHEF
+========================================================= */
+
+function tampilkanSapaanChef(){
+
+  const balon=
+    document.getElementById(
+      "balonChef"
+    );
+
+
+  balon.style.display="block";
+
+
+  balon.style.animation="none";
+
+
+  setTimeout(function(){
+
+    balon.style.animation=
+      "munculBalon .6s ease";
+
+  },10);
+
+}
+
+
+setTimeout(function(){
+
+  const balon=
+    document.getElementById(
+      "balonChef"
+    );
+
+  if(balon){
+
+    balon.style.display="none";
+
+  }
+
+},8000);
+
+
+/* =========================================================
+   TANGGAL
+========================================================= */
+
+function tampilkanTanggal(tanggal){
+
+  const tanggalObj=
+    new Date(tanggal+"T00:00:00");
+
+
+  document.getElementById("tanggal")
+    .textContent=
+    tanggalObj.toLocaleDateString(
+      "id-ID",
+      pilihanTanggal
+    );
+
+}
+
+
+/* =========================================================
+   DATA
+========================================================= */
+
+function ambilData(){
+
+  return dataMenu[tanggalDipilih];
+
+}
+
+
+/* =========================================================
+   TAMPILKAN MENU
+========================================================= */
+
+function tampilkanMenu(kelompok){
+
+  kelompokDipilih=
+    kelompok;
+
+
+  const dataTanggal=
+    ambilData();
+
+
+  const data=
+    dataTanggal
+      ? dataTanggal[kelompok]
+      : null;
+
+
+  if(!data){
+
+    document.getElementById("judulMenu")
+      .textContent=
+      "Menu Belum Tersedia";
+
+
+    document.getElementById("daftarMenu")
+      .innerHTML=
+      "<li>Data menu belum tersedia untuk tanggal ini.</li>";
+
+
+    document.getElementById("kalori")
+      .textContent="-";
+
+    document.getElementById("protein")
+      .textContent="-";
+
+    document.getElementById("karbo")
+      .textContent="-";
+
+    document.getElementById("lemak")
+      .textContent="-";
+
+    return;
+
+  }
+
+
+  document.getElementById("judulMenu")
+    .textContent=
+    data.judul;
+
+
+  const daftar=
+    document.getElementById(
+      "daftarMenu"
+    );
+
+
+  daftar.innerHTML="";
+
+
+  data.menu.forEach(function(item){
+
+    const li=
+      document.createElement("li");
+
+
+    li.textContent=
+      item;
+
+
+    daftar.appendChild(
+      li
+    );
+
+  });
+
+
+  document.getElementById("kalori")
+    .textContent=
+    data.kalori;
+
+
+  document.getElementById("protein")
+    .textContent=
+    data.protein;
+
+
+  document.getElementById("karbo")
+    .textContent=
+    data.karbo;
+
+
+  document.getElementById("lemak")
+    .textContent=
+    data.lemak;
+
+}
+
+
+/* =========================================================
+   FOTO
+========================================================= */
+
+function gantiFoto(kelompok){
+
+  const foto=
+    document.getElementById(
+      "fotoMenu"
+    );
+
+
+  const pesan=
+    document.getElementById(
+      "fotoTidakAda"
+    );
+
+
+  const alamatFoto=
+    "./Foto menu/"
+    +
+    tanggalDipilih
+    +
+    "/"
+    +
+    kelompok
+    +
+    ".jpg";
+
+
+  foto.style.display=
+    "block";
+
+
+  pesan.style.display=
+    "none";
+
+
+  foto.onerror=
+    null;
+
+
+  foto.onerror=
+    function(){
+
+      foto.style.display=
+        "none";
+
+
+      pesan.style.display=
+        "block";
+
+    };
+
+
+  foto.src=
+    alamatFoto
+    +
+    "?v="
+    +
+    Date.now();
+
+}
+
+
+/* =========================================================
+   PILIH KELOMPOK
+========================================================= */
+
+function pilihKelompok(
+  button,
+  kelompok
+){
+
+  document
+    .querySelectorAll(
+      ".kelompok button"
+    )
+    .forEach(function(btn){
+
+      btn.classList.remove(
+        "active",
+        "active-kecil",
+        "active-besar",
+        "active-bumil",
+        "active-busui",
+        "active-balita"
+      );
+
+    });
+
+
+  button.classList.add(
+    "active",
+    "active-"+kelompok
+  );
+
+
+  kelompokDipilih=
+    kelompok;
+
+
+  tampilkanMenu(
+    kelompok
+  );
+
+
+  gantiFoto(
+    kelompok
+  );
+
+
+  tampilkanCountdown();
+
+}
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+function tampilkanCountdown(){
+
+  const sekarang=
+    new Date();
+
+
+  const tahun=
+    Number(
+      tanggalDipilih.substring(0,4)
+    );
+
+
+  const bulan=
+    Number(
+      tanggalDipilih.substring(5,7)
+    ) - 1;
+
+
+  const hari=
+    Number(
+      tanggalDipilih.substring(8,10)
+    );
+
+
+  const batas=
+    new Date(
+      tahun,
+      bulan,
+      hari,
+      12,
+      0,
+      0
+    );
+
+
+  const countdown=
+    document.getElementById(
+      "countdown"
+    );
+
+
+  const peringatan=
+    document.getElementById(
+      "peringatan"
+    );
+
+
+  const selisih=
+    batas.getTime()
+    -
+    sekarang.getTime();
+
+
+  if(selisih<=0){
+
+    countdown.textContent=
+      "00:00:00";
+
+
+    countdown.style.color=
+      "#d00000";
+
+
+    peringatan.textContent=
+      "⚠️ Waktu konsumsi telah berakhir.";
+
+
+    peringatan.classList.add(
+      "merah"
+    );
+
+
+    return;
+
+  }
+
+
+  const totalDetik=
+    Math.floor(
+      selisih/1000
+    );
+
+
+  const jam=
+    Math.floor(
+      totalDetik/3600
+    );
+
+
+  const menit=
+    Math.floor(
+      (totalDetik%3600)/60
+    );
+
+
+  const detik=
+    totalDetik%60;
+
+
+  countdown.textContent=
+    String(jam).padStart(2,"0")
+    +
+    ":"
+    +
+    String(menit).padStart(2,"0")
+    +
+    ":"
+    +
+    String(detik).padStart(2,"0");
+
+
+  if(
+    selisih<=
+    60*60*1000
+  ){
+
+    countdown.style.color=
+      "#d00000";
+
+
+    peringatan.textContent=
+      "⚠️ Waktu konsumsi hampir berakhir!";
+
+
+    peringatan.classList.add(
+      "merah"
+    );
+
+  }else{
+
+    countdown.style.color=
+      "#087f5b";
+
+
+    peringatan.textContent=
+      "Waktu konsumsi masih tersedia.";
+
+
+    peringatan.classList.remove(
+      "merah"
+    );
+
+  }
+
+}
+
+
+setInterval(
+  tampilkanCountdown,
+  1000
+);
+
+
+/* =========================================================
+   KALENDER
+========================================================= */
+
+const namaBulan=[
+
+  "Januari",
+  "Februari",
+  "Maret",
+  "April",
+  "Mei",
+  "Juni",
+  "Juli",
+  "Agustus",
+  "September",
+  "Oktober",
+  "November",
+  "Desember"
+
+];
+
+
+let tanggalKalender=
+  new Date(
+    sekarangHariIni.getFullYear(),
+    sekarangHariIni.getMonth(),
+    1
+  );
+
+
+function tampilkanKalender(){
+
+  const tahun=
+    tanggalKalender.getFullYear();
+
+
+  const bulan=
+    tanggalKalender.getMonth();
+
+
+  document.getElementById(
+    "namaBulan"
+  ).textContent=
+    namaBulan[bulan]
+    +
+    " "
+    +
+    tahun;
+
+
+  const kalender=
+    document.getElementById(
+      "kalenderTanggal"
+    );
+
+
+  kalender.innerHTML="";
+
+
+  const hariPertama=
+    new Date(
+      tahun,
+      bulan,
+      1
+    ).getDay();
+
+
+  const jumlahHari=
+    new Date(
+      tahun,
+      bulan+1,
+      0
+    ).getDate();
+
+
+  for(
+    let i=0;
+    i<hariPertama;
+    i++
+  ){
+
+    const kosong=
+      document.createElement(
+        "button"
+      );
+
+
+    kosong.className=
+      "kosong";
+
+
+    kalender.appendChild(
+      kosong
+    );
+
+  }
+
+
+  for(
+    let hari=1;
+    hari<=jumlahHari;
+    hari++
+  ){
+
+    const tombol=
+      document.createElement(
+        "button"
+      );
+
+
+    tombol.textContent=
+      hari;
+
+
+    const tanggal=
+      tahun
+      +
+      "-"
+      +
+      String(
+        bulan+1
+      ).padStart(2,"0")
+      +
+      "-"
+      +
+      String(
+        hari
+      ).padStart(2,"0");
+
+
+    if(
+      dataMenu[tanggal]
+    ){
+
+      tombol.classList.add(
+        "ada-menu"
+      );
+
+    }
+
+
+    if(
+      tanggal===
+      tanggalDipilih
+    ){
+
+      tombol.classList.add(
+        "terpilih"
+      );
+
+    }
+
+
+    tombol.onclick=
+      function(){
+
+        pilihTanggal(
+          tanggal,
+          tombol
+        );
+
+      };
+
+
+    kalender.appendChild(
+      tombol
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   PILIH TANGGAL
+========================================================= */
+
+function pilihTanggal(
+  tanggal,
+  tombol
+){
+
+  tanggalDipilih=
+    tanggal;
+
+
+  tampilkanTanggal(
+    tanggal
+  );
+
+
+  document
+    .querySelectorAll(
+      ".kalender-tanggal button"
+    )
+    .forEach(function(btn){
+
+      btn.classList.remove(
+        "terpilih"
+      );
+
+    });
+
+
+  tombol.classList.add(
+    "terpilih"
+  );
+
+
+  if(
+    dataMenu[tanggal]
+  ){
+
+    kelompokDipilih=
+      "kecil";
+
+
+    document
+      .querySelectorAll(
+        ".kelompok button"
+      )
+      .forEach(function(btn){
+
+        btn.classList.remove(
+          "active",
+          "active-kecil",
+          "active-besar",
+          "active-bumil",
+          "active-busui",
+          "active-balita"
+        );
+
+      });
+
+
+    const tombolKecil=
+      document.querySelector(
+        '.kelompok button[onclick*="kecil"]'
+      );
+
+
+    if(
+      tombolKecil
+    ){
+
+      tombolKecil.classList.add(
+        "active",
+        "active-kecil"
+      );
+
+    }
+
+
+    tampilkanMenu(
+      "kecil"
+    );
+
+
+    gantiFoto(
+      "kecil"
+    );
+
+
+    tampilkanPilihanRiwayat();
+
+
+  }else{
+
+    tampilkanMenu(
+      kelompokDipilih
+    );
+
+
+    const foto=
+      document.getElementById(
+        "fotoMenu"
+      );
+
+
+    const pesan=
+      document.getElementById(
+        "fotoTidakAda"
+      );
+
+
+    foto.style.display=
+      "none";
+
+
+    pesan.style.display=
+      "block";
+
+
+    document.getElementById(
+      "hasilRiwayat"
+    ).innerHTML=
+      "<h3>📋 Tidak Ada Menu</h3>"
+      +
+      "<div>"
+      +
+      "Belum ada data menu untuk tanggal ini."
+      +
+      "</div>";
+
+  }
+
+
+  tampilkanCountdown();
+
+}
+
+
+/* =========================================================
+   FORMAT TANGGAL
+========================================================= */
+
+function formatTanggal(
+  tanggal
+){
+
+  return new Date(
+    tanggal+"T00:00:00"
+  ).toLocaleDateString(
+    "id-ID",
+    {
+      day:"numeric",
+      month:"long",
+      year:"numeric"
+    }
+  );
+
+}
+
+
+/* =========================================================
+   RIWAYAT
+========================================================= */
+
+function tampilkanPilihanRiwayat(){
+
+  const hasil=
+    document.getElementById(
+      "hasilRiwayat"
+    );
+
+
+  hasil.innerHTML=`
+
+    <h3>
+      📋 Menu ${formatTanggal(tanggalDipilih)}
+    </h3>
+
+    <p>
+      Silakan pilih kelompok:
+    </p>
+
+
+    <div style="
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:12px;
+    ">
+
+
+      <button
+        onclick="tampilkanRiwayat('kecil')"
+        style="
+          padding:15px;
+          border:none;
+          border-radius:12px;
+          background:#d8f5e5;
+          color:#087f5b;
+          font-weight:bold;
+        "
+      >
+        🍱 Porsi Kecil
+      </button>
+
+
+      <button
+        onclick="tampilkanRiwayat('besar')"
+        style="
+          padding:15px;
+          border:none;
+          border-radius:12px;
+          background:#dceeff;
+          color:#1971c2;
+          font-weight:bold;
+        "
+      >
+        🍛 Porsi Besar
+      </button>
+
+
+      <button
+        onclick="tampilkanRiwayat('bumil')"
+        style="
+          padding:15px;
+          border:none;
+          border-radius:12px;
+          background:#ffe0e6;
+          color:#d6336c;
+          font-weight:bold;
+        "
+      >
+        🤰 Bumil
+      </button>
+
+
+      <button
+        onclick="tampilkanRiwayat('busui')"
+        style="
+          padding:15px;
+          border:none;
+          border-radius:12px;
+          background:#fff1b8;
+          color:#8a6900;
+          font-weight:bold;
+        "
+      >
+        🤱 Busui
+      </button>
+
+
+      <button
+        onclick="tampilkanRiwayat('balita')"
+        style="
+          padding:15px;
+          border:none;
+          border-radius:12px;
+          background:#e8ddff;
+          color:#7048b8;
+          font-weight:bold;
+        "
+      >
+        👶 Balita
+      </button>
+
+
+    </div>
+
+
+    <div
+      id="detailRiwayat"
+      style="margin-top:15px;"
+    ></div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   DETAIL RIWAYAT
+========================================================= */
+
+function tampilkanRiwayat(
+  kelompok
+){
+
+  const dataTanggal=
+    dataMenu[tanggalDipilih];
+
+
+  if(!dataTanggal)
+    return;
+
+
+  const menu=
+    dataTanggal[kelompok];
+
+
+  if(!menu)
+    return;
+
+
+  kelompokDipilih=
+    kelompok;
+
+
+  document
+    .querySelectorAll(
+      ".kelompok button"
+    )
+    .forEach(function(button){
+
+      button.classList.remove(
+        "active",
+        "active-kecil",
+        "active-besar",
+        "active-bumil",
+        "active-busui",
+        "active-balita"
+      );
+
+    });
+
+
+  const tombolKelompok=
+    document.querySelector(
+      '.kelompok button[onclick*="'+kelompok+'"]'
+    );
+
+
+  if(
+    tombolKelompok
+  ){
+
+    tombolKelompok.classList.add(
+      "active",
+      "active-"+kelompok
+    );
+
+  }
+
+
+  tampilkanMenu(
+    kelompok
+  );
+
+
+  gantiFoto(
+    kelompok
+  );
+
+
+  tampilkanCountdown();
+
+
+  const detail=
+    document.getElementById(
+      "detailRiwayat"
+    );
+
+
+  if(
+    detail
+  ){
+
+    let daftarMenu="";
+
+
+    menu.menu.forEach(
+      function(item){
+
+        daftarMenu+=
+          "<li>"
+          +
+          item
+          +
+          "</li>";
+
+      }
+    );
+
+
+    detail.innerHTML=`
+
+      <div style="
+        padding:15px;
+        background:#ffffff;
+        border-radius:12px;
+      ">
+
+        <h3>
+          ${menu.judul}
+        </h3>
+
+
+        <ul style="
+          margin-top:10px;
+          padding-left:20px;
+        ">
+
+          ${daftarMenu}
+
+        </ul>
+
+
+        <hr style="
+          margin:12px 0;
+        ">
+
+
+        <b>
+          📊 Informasi Gizi
+        </b>
+
+
+        <div style="
+          margin-top:8px;
+        ">
+
+          🔥 Kalori:
+          ${menu.kalori}
+
+          <br>
+
+          💪 Protein:
+          ${menu.protein}
+
+          <br>
+
+          🍚 Karbohidrat:
+          ${menu.karbo}
+
+          <br>
+
+          🥑 Lemak:
+          ${menu.lemak}
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =========================================================
+   BULAN
+========================================================= */
+
+function bulanSebelumnya(){
+
+  tanggalKalender.setMonth(
+    tanggalKalender.getMonth()-1
+  );
+
+
+  tampilkanKalender();
+
+}
+
+
+function bulanBerikutnya(){
+
+  tanggalKalender.setMonth(
+    tanggalKalender.getMonth()+1
+  );
+
+
+  tampilkanKalender();
+
+}
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+const nomorWhatsApp=
+  "6283821514809";
+
+
+function kirimPengaduan(){
+
+  const nama=
+    document
+      .getElementById(
+        "namaPengadu"
+      )
+      .value
+      .trim();
+
+
+  const pesan=
+    document
+      .getElementById(
+        "pesanPengaduan"
+      )
+      .value
+      .trim();
+
+
+  if(
+    nama===""
+  ){
+
+    alert(
+      "Silakan isi nama terlebih dahulu."
+    );
+
+    return;
+
+  }
+
+
+  if(
+    pesan===""
+  ){
+
+    alert(
+      "Silakan tuliskan pertanyaan atau pengaduan."
+    );
+
+    return;
+
+  }
+
+
+  const teks=
+
+    "Halo SPPG Sukanagara 003.\n\n"
+    +
+    "Saya: "
+    +
+    nama
+    +
+    "\n\n"
+    +
+    "Pesan/Pengaduan:\n"
+    +
+    pesan
+    +
+    "\n\n"
+    +
+    "Terima kasih.";
+
+
+  const url=
+
+    "https://api.whatsapp.com/send?phone="
+    +
+    nomorWhatsApp
+    +
+    "&text="
+    +
+    encodeURIComponent(
+      teks
+    );
+
+
+  window.location.href=
+    url;
+
+}
+
+
+/* =========================================================
+   JALANKAN WEBSITE
+========================================================= */
+
+tampilkanTanggal(
+  tanggalDipilih
+);
+
+
+tampilkanMenu(
+  "kecil"
+);
+
+
+gantiFoto(
+  "kecil"
+);
+
+
+tampilkanKalender();
+
+
+tampilkanCountdown();
+
+
+</script>
+
+</body>
+
+</html>

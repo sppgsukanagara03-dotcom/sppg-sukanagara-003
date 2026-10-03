@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Admin Menu MBG</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f2f6f3;
+color:#222;
+}
+
+header{
+background:linear-gradient(135deg,#087f5b,#12b886);
+color:white;
+padding:25px 18px;
+text-align:center;
+border-radius:0 0 25px 25px;
+}
+
+header h1{
+font-size:25px;
+margin-bottom:7px;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+padding:18px;
+}
+
+.card{
+background:white;
+border-radius:18px;
+padding:18px;
+margin-bottom:16px;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+h2{
+color:#087f5b;
+margin-bottom:15px;
+font-size:20px;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin-bottom:7px;
+color:#444;
+}
+
+input,
+textarea,
+select{
+width:100%;
+padding:13px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:16px;
+margin-bottom:14px;
+}
+
+button{
+border:none;
+border-radius:12px;
+padding:12px;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.btn-hijau{
+width:100%;
+background:#087f5b;
+color:white;
+margin-top:5px;
+}
+
+.btn-merah{
+background:#ffe5e5;
+color:#d00000;
+}
+
+.btn-edit{
+background:#e7f5ef;
+color:#087f5b;
+}
+
+.kelompok{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.kelompok button{
+background:#e7f5ef;
+color:#087f5b;
+}
+
+.kelompok button.active{
+background:#087f5b;
+color:white;
+}
+
+.status{
+padding:12px;
+border-radius:10px;
+background:#e7f5ef;
+color:#087f5b;
+font-weight:bold;
+margin-bottom:15px;
+display:none;
+}
+
+.menu-item{
+background:#f7faf8;
+border-radius:12px;
+padding:14px;
+margin-bottom:12px;
+}
+
+.menu-item h3{
+color:#087f5b;
+margin-bottom:12px;
+font-size:17px;
+}
+
+.gizi{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.data-tanggal{
+background:#f2f6f3;
+padding:15px;
+border-radius:12px;
+margin-bottom:14px;
+}
+
+.nama-tanggal{
+font-weight:bold;
+color:#087f5b;
+margin-bottom:12px;
+font-size:17px;
+}
+
+.data-kelompok{
+background:white;
+padding:12px;
+border-radius:10px;
+margin-bottom:8px;
+}
+
+.baris-kelompok{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:8px;
+}
+
+.nama-kelompok{
+font-weight:bold;
+font-size:14px;
+}
+
+.tombol-kelompok{
+display:flex;
+gap:6px;
+}
+
+.tombol-kelompok button{
+padding:8px 10px;
+font-size:12px;
+}
+
+.info{
+color:#666;
+line-height:1.6;
+font-size:14px;
+}
+
+#login{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.login-box{
+background:white;
+width:100%;
+max-width:400px;
+padding:25px;
+border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.login-box h1{
+text-align:center;
+color:#087f5b;
+margin-bottom:8px;
+}
+
+.login-box p{
+text-align:center;
+color:#777;
+margin-bottom:20px;
+}
+
+#errorLogin{
+color:#d00000;
+text-align:center;
+margin-top:10px;
+display:none;
+}
+
+#admin{
+display:none;
+}
+
+footer{
+text-align:center;
+padding:20px;
+color:#777;
+font-size:13px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<div id="login">
+
+<div class="login-box">
+
+<h1>🔐 Admin MBG</h1>
+
+<p>
+SPPG Sukanagara 003
+</p>
+
+<label>
+PIN Admin
+</label>
+
+<input
+type="password"
+id="pin"
+placeholder="Masukkan PIN">
+
+<button
+class="btn-hijau"
+onclick="loginAdmin()">
+
+Masuk
+
+</button>
+
+<div id="errorLogin">
+
+PIN salah.
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     ADMIN
+========================= -->
+
+<div id="admin">
+
+
+<header>
+
+<h1>
+⚙️ Admin Menu MBG
+</h1>
+
+<p>
+SPPG Sukanagara 003
+</p>
+
+</header>
+
+
+
+<div class="container">
+
+
+<div
+id="status"
+class="status">
+</div>
+
+
+
+<!-- =========================
+     TANGGAL
+========================= -->
+
+<div class="card">
+
+<h2>
+📅 Tanggal Menu
+</h2>
+
+<label>
+Pilih tanggal
+</label>
+
+<input
+type="date"
+id="tanggal">
+
+</div>
+
+
+
+<!-- =========================
+     KELOMPOK
+========================= -->
+
+<div class="card">
+
+<h2>
+👥 Kelompok
+</h2>
+
+<div class="kelompok">
+
+
+<button
+class="active"
+onclick="pilihKelompok('kecil',this)">
+
+🍱 Porsi Kecil
+
+</button>
+
+
+<button
+onclick="pilihKelompok('besar',this)">
+
+🍛 Porsi Besar
+
+</button>
+
+
+<button
+onclick="pilihKelompok('bumil',this)">
+
+🤰 Bumil
+
+</button>
+
+
+<button
+onclick="pilihKelompok('busui',this)">
+
+🤱 Busui
+
+</button>
+
+
+<button
+onclick="pilihKelompok('balita',this)">
+
+👶 Balita
+
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     MENU
+========================= -->
+
+<div class="card">
+
+<h2 id="judulKelompok">
+
+🍱 Menu Porsi Kecil
+
+</h2>
+
+
+<div class="menu-item">
+
+<h3>
+Menu 1
+</h3>
+
+<input
+id="menu1"
+placeholder="Contoh: 🍚 Nasi">
+
+</div>
+
+
+<div class="menu-item">
+
+<h3>
+Menu 2
+</h3>
+
+<input
+id="menu2"
+placeholder="Contoh: 🍗 Ayam">
+
+</div>
+
+
+<div class="menu-item">
+
+<h3>
+Menu 3
+</h3>
+
+<input
+id="menu3"
+placeholder="Contoh: 🥬 Sayur">
+
+</div>
+
+
+<div class="menu-item">
+
+<h3>
+Menu 4
+</h3>
+
+<input
+id="menu4"
+placeholder="Contoh: 🍘 Tempe">
+
+</div>
+
+
+<div class="menu-item">
+
+<h3>
+Menu 5
+</h3>
+
+<input
+id="menu5"
+placeholder="Contoh: 🍊 Buah">
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     GIZI
+========================= -->
+
+<div class="card">
+
+<h2>
+📊 Kandungan Gizi
+</h2>
+
+<div class="gizi">
+
+
+<div>
+
+<label>
+Kalori
+</label>
+
+<input
+id="kalori"
+placeholder="Contoh: 415,5 kcal">
+
+</div>
+
+
+<div>
+
+<label>
+Protein
+</label>
+
+<input
+id="protein"
+placeholder="Contoh: 14 g">
+
+</div>
+
+
+<div>
+
+<label>
+Karbohidrat
+</label>
+
+<input
+id="karbo"
+placeholder="Contoh: 53,26 g">
+
+</div>
+
+
+<div>
+
+<label>
+Lemak
+</label>
+
+<input
+id="lemak"
+placeholder="Contoh: 16,02 g">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     SIMPAN
+========================= -->
+
+<div class="card">
+
+<button
+class="btn-hijau"
+onclick="simpanData()">
+
+💾 SIMPAN MENU
+
+</button>
+
+
+<button
+class="btn-merah"
+onclick="hapusForm()"
+style="
+width:100%;
+margin-top:10px;
+">
+
+🗑️ KOSONGKAN FORM
+
+</button>
+
+</div>
+
+
+
+<!-- =========================
+     DATA TERSIMPAN
+========================= -->
+
+<div class="card">
+
+<h2>
+📋 Data Menu Tersimpan
+</h2>
+
+<div id="daftarData">
+
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>
+ℹ️ Catatan
+</h2>
+
+<p class="info">
+
+Data yang dimasukkan melalui halaman
+admin akan disimpan di browser.
+
+<br><br>
+
+Data Balita juga sudah termasuk dan
+akan tersimpan bersama data kelompok
+lainnya.
+
+</p>
+
+</div>
+
+
+</div>
+
+
+<footer>
+
+© 2026 SPPG Sukanagara 003
+
+</footer>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   PIN ADMIN
+========================= */
+
+const PIN_ADMIN="1234";
+
+
+function loginAdmin(){
+
+const pin=
+document.getElementById("pin").value;
+
+
+if(pin===PIN_ADMIN){
+
+document.getElementById("login")
+.style.display="none";
+
+document.getElementById("admin")
+.style.display="block";
+
+tampilkanDataTersimpan();
+
+}else{
+
+document.getElementById("errorLogin")
+.style.display="block";
+
+}
+
+}
+
+
+
+/* =========================
+   DATA
+========================= */
+
+let kelompokDipilih="kecil";
+
+
+let semuaData=
+JSON.parse(
+localStorage.getItem("dataMenuSPPG")
+) || {};
+
+
+
+/* =========================
+   PILIH KELOMPOK
+========================= */
+
+function pilihKelompok(
+kelompok,
+tombol
+){
+
+kelompokDipilih=kelompok;
+
+
+document
+.querySelectorAll(".kelompok button")
+.forEach(function(btn){
+
+btn.classList.remove("active");
+
+});
+
+
+tombol.classList.add("active");
+
+
+const judul={
+
+kecil:"🍱 Menu Porsi Kecil",
+
+besar:"🍛 Menu Porsi Besar",
+
+bumil:"🤰 Menu Bumil",
+
+busui:"🤱 Menu Busui",
+
+balita:"👶 Menu Balita"
+
+};
+
+
+document.getElementById(
+"judulKelompok"
+).textContent=
+judul[kelompok];
+
+
+muatData();
+
+}
+
+
+
+/* =========================
+   SIMPAN DATA
+========================= */
+
+function simpanData(){
+
+const tanggal=
+document.getElementById("tanggal").value;
+
+
+if(!tanggal){
+
+tampilkanStatus(
+"⚠️ Silakan pilih tanggal terlebih dahulu.",
+true
+);
+
+return;
+
+}
+
+
+let daftarMenu=[];
+
+
+for(let i=1;i<=5;i++){
+
+const nilai=
+document.getElementById(
+"menu"+i
+).value.trim();
+
+
+if(nilai){
+
+daftarMenu.push(nilai);
+
+}
+
+}
+
+
+const judul={
+
+kecil:"Menu Porsi Kecil",
+
+besar:"Menu Porsi Besar",
+
+bumil:"Menu Bumil",
+
+busui:"Menu Busui",
+
+balita:"Menu Balita"
+
+};
+
+
+if(!semuaData[tanggal]){
+
+semuaData[tanggal]={};
+
+}
+
+
+semuaData[tanggal][kelompokDipilih]={
+
+judul:
+judul[kelompokDipilih],
+
+menu:
+daftarMenu,
+
+kalori:
+document.getElementById("kalori").value,
+
+protein:
+document.getElementById("protein").value,
+
+karbo:
+document.getElementById("karbo").value,
+
+lemak:
+document.getElementById("lemak").value
+
+};
+
+
+localStorage.setItem(
+"dataMenuSPPG",
+JSON.stringify(semuaData)
+);
+
+
+tampilkanStatus(
+"✅ Menu berhasil disimpan.",
+false
+);
+
+
+tampilkanDataTersimpan();
+
+}
+
+
+
+/* =========================
+   MUAT DATA
+========================= */
+
+function muatData(){
+
+const tanggal=
+document.getElementById("tanggal").value;
+
+
+if(!tanggal){
+
+kosongkanForm();
+
+return;
+
+}
+
+
+const data=
+semuaData[tanggal]
+?
+semuaData[tanggal][kelompokDipilih]
+:
+null;
+
+
+if(!data){
+
+kosongkanForm();
+
+return;
+
+}
+
+
+for(let i=1;i<=5;i++){
+
+document.getElementById(
+"menu"+i
+).value=
+data.menu[i-1] || "";
+
+}
+
+
+document.getElementById("kalori")
+.value=data.kalori || "";
+
+document.getElementById("protein")
+.value=data.protein || "";
+
+document.getElementById("karbo")
+.value=data.karbo || "";
+
+document.getElementById("lemak")
+.value=data.lemak || "";
+
+}
+
+
+
+/* =========================
+   TANGGAL BERUBAH
+========================= */
+
+document.getElementById(
+"tanggal"
+).addEventListener(
+"change",
+function(){
+
+muatData();
+
+}
+);
+
+
+
+/* =========================
+   KOSONGKAN FORM
+========================= */
+
+function kosongkanForm(){
+
+for(let i=1;i<=5;i++){
+
+document.getElementById(
+"menu"+i
+).value="";
+
+}
+
+
+document.getElementById("kalori")
+.value="";
+
+document.getElementById("protein")
+.value="";
+
+document.getElementById("karbo")
+.value="";
+
+document.getElementById("lemak")
+.value="";
+
+}
+
+
+function hapusForm(){
+
+kosongkanForm();
+
+}
+
+
+
+/* =========================
+   STATUS
+========================= */
+
+function tampilkanStatus(
+pesan,
+merah
+){
+
+const status=
+document.getElementById("status");
+
+
+status.textContent=pesan;
+
+status.style.display="block";
+
+
+if(merah){
+
+status.style.background="#ffe5e5";
+
+status.style.color="#d00000";
+
+}else{
+
+status.style.background="#e7f5ef";
+
+status.style.color="#087f5b";
+
+}
+
+
+setTimeout(function(){
+
+status.style.display="none";
+
+},3000);
+
+}
+
+
+
+/* =========================
+   TAMPILKAN DATA
+========================= */
+
+function tampilkanDataTersimpan(){
+
+const tempat=
+document.getElementById(
+"daftarData"
+);
+
+
+const tanggal=
+Object.keys(semuaData)
+.sort();
+
+
+if(tanggal.length===0){
+
+tempat.innerHTML=
+"<p class='info'>Belum ada data tersimpan.</p>";
+
+return;
+
+}
+
+
+tempat.innerHTML="";
+
+
+tanggal.forEach(function(tgl){
+
+
+const kotak=
+document.createElement("div");
+
+kotak.className="data-tanggal";
+
+
+kotak.innerHTML=`
+
+<div class="nama-tanggal">
+
+📅 ${tgl}
+
+</div>
+
+`;
+
+
+const kelompok={
+
+kecil:"🍱 Porsi Kecil",
+
+besar:"🍛 Porsi Besar",
+
+bumil:"🤰 Bumil",
+
+busui:"🤱 Busui",
+
+balita:"👶 Balita"
+
+};
+
+
+Object.keys(kelompok)
+.forEach(function(kel){
+
+
+if(!semuaData[tgl][kel]){
+
+return;
+
+}
+
+
+const baris=
+document.createElement("div");
+
+baris.className=
+"data-kelompok";
+
+
+baris.innerHTML=`
+
+<div class="baris-kelompok">
+
+<div class="nama-kelompok">
+
+${kelompok[kel]}
+
+</div>
+
+
+<div class="tombol-kelompok">
+
+
+<button
+class="btn-edit"
+onclick="
+editKelompok('${tgl}','${kel}')
+">
+
+✏️ Edit
+
+</button>
+
+
+<button
+class="btn-merah"
+onclick="
+hapusKelompok('${tgl}','${kel}')
+">
+
+🗑️ Hapus
+
+</button>
+
+
+</div>
+
+</div>
+
+`;
+
+
+kotak.appendChild(baris);
+
+
+});
+
+
+tempat.appendChild(kotak);
+
+
+});
+
+}
+
+
+
+/* =========================
+   EDIT KELOMPOK
+========================= */
+
+function editKelompok(
+tanggal,
+kelompok
+){
+
+document.getElementById(
+"tanggal"
+).value=
+tanggal;
+
+
+kelompokDipilih=
+kelompok;
+
+
+document
+.querySelectorAll(".kelompok button")
+.forEach(function(btn){
+
+btn.classList.remove("active");
+
+});
+
+
+const tombol=
+document.querySelector(
+'.kelompok button[onclick*="'+kelompok+'"]'
+);
+
+
+if(tombol){
+
+tombol.classList.add("active");
+
+}
+
+
+const judul={
+
+kecil:"🍱 Menu Porsi Kecil",
+
+besar:"🍛 Menu Porsi Besar",
+
+bumil:"🤰 Menu Bumil",
+
+busui:"🤱 Menu Busui",
+
+balita:"👶 Menu Balita"
+
+};
+
+
+document.getElementById(
+"judulKelompok"
+).textContent=
+judul[kelompok];
+
+
+muatData();
+
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+
+tampilkanStatus(
+"✏️ Data sedang diedit. Silakan ubah lalu tekan SIMPAN MENU.",
+false
+);
+
+}
+
+
+
+/* =========================
+   HAPUS KELOMPOK
+========================= */
+
+function hapusKelompok(
+tanggal,
+kelompok
+){
+
+const nama={
+
+kecil:"Porsi Kecil",
+
+besar:"Porsi Besar",
+
+bumil:"Bumil",
+
+busui:"Busui",
+
+balita:"Balita"
+
+};
+
+
+const yakin=
+confirm(
+"Yakin ingin menghapus "
++nama[kelompok]
++" pada tanggal "
++tanggal
++"?"
+);
+
+
+if(!yakin){
+
+return;
+
+}
+
+
+if(semuaData[tanggal]){
+
+delete semuaData[tanggal][kelompok];
+
+}
+
+
+if(
+semuaData[tanggal] &&
+Object.keys(
+semuaData[tanggal]
+).length===0
+){
+
+delete semuaData[tanggal];
+
+}
+
+
+localStorage.setItem(
+"dataMenuSPPG",
+JSON.stringify(semuaData)
+);
+
+
+tampilkanDataTersimpan();
+
+
+tampilkanStatus(
+"🗑️ "+nama[kelompok]+" berhasil dihapus.",
+false
+);
+
+}
+
+
+
+/* =========================
+   MULAI
+========================= */
+
+document.getElementById(
+"tanggal"
+).value=
+"2026-10-04";
+
+
+</script>
+
+</body>
+
+</html>
